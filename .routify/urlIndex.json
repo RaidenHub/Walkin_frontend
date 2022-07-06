@@ -1,4 +1,6 @@
 [
-  "/app/index",
-  "/index"
+  "/app/order/index",
+  "/app/toppings/index",
+  "/index",
+  "/register"
 ]

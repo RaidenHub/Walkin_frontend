@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.8
- * File generated Tue Jul 05 2022 17:12:55 GMT+0530 (India Standard Time)
+ * File generated Wed Jul 06 2022 15:20:15 GMT+0530 (India Standard Time)
  */
 
 export const __version = "2.18.8"
-export const __timestamp = "2022-07-05T11:42:55.114Z"
+export const __timestamp = "2022-07-06T09:50:15.145Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -35,29 +35,152 @@ export const _tree = {
       "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/_layout.svelte",
       "children": [
         {
-          "isFile": true,
-          "isDir": false,
-          "file": "index.svelte",
-          "filepath": "/app/index.svelte",
-          "name": "index",
-          "ext": "svelte",
+          "isFile": false,
+          "isDir": true,
+          "file": "order",
+          "filepath": "/app/order",
+          "name": "order",
+          "ext": "",
           "badExt": false,
-          "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/index.svelte",
-          "importPath": "../src/pages/app/index.svelte",
+          "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order",
+          "children": [
+            {
+              "isFile": true,
+              "isDir": false,
+              "file": "[id].svelte",
+              "filepath": "/app/order/[id].svelte",
+              "name": "[id]",
+              "ext": "svelte",
+              "badExt": false,
+              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order/[id].svelte",
+              "importPath": "../src/pages/app/order/[id].svelte",
+              "isLayout": false,
+              "isReset": false,
+              "isIndex": false,
+              "isFallback": false,
+              "isPage": true,
+              "ownMeta": {},
+              "meta": {
+                "recursive": true,
+                "preload": false,
+                "prerender": true
+              },
+              "path": "/app/order/:id",
+              "id": "_app_order__id",
+              "component": () => import('../src/pages/app/order/[id].svelte').then(m => m.default)
+            },
+            {
+              "isFile": true,
+              "isDir": false,
+              "file": "index.svelte",
+              "filepath": "/app/order/index.svelte",
+              "name": "index",
+              "ext": "svelte",
+              "badExt": false,
+              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order/index.svelte",
+              "importPath": "../src/pages/app/order/index.svelte",
+              "isLayout": false,
+              "isReset": false,
+              "isIndex": true,
+              "isFallback": false,
+              "isPage": true,
+              "ownMeta": {},
+              "meta": {
+                "recursive": true,
+                "preload": false,
+                "prerender": true
+              },
+              "path": "/app/order/index",
+              "id": "_app_order_index",
+              "component": () => import('../src/pages/app/order/index.svelte').then(m => m.default)
+            }
+          ],
           "isLayout": false,
           "isReset": false,
-          "isIndex": true,
+          "isIndex": false,
           "isFallback": false,
-          "isPage": true,
+          "isPage": false,
           "ownMeta": {},
           "meta": {
             "recursive": true,
             "preload": false,
             "prerender": true
           },
-          "path": "/app/index",
-          "id": "_app_index",
-          "component": () => import('../src/pages/app/index.svelte').then(m => m.default)
+          "path": "/app/order"
+        },
+        {
+          "isFile": false,
+          "isDir": true,
+          "file": "toppings",
+          "filepath": "/app/toppings",
+          "name": "toppings",
+          "ext": "",
+          "badExt": false,
+          "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings",
+          "children": [
+            {
+              "isFile": true,
+              "isDir": false,
+              "file": "[id].svelte",
+              "filepath": "/app/toppings/[id].svelte",
+              "name": "[id]",
+              "ext": "svelte",
+              "badExt": false,
+              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings/[id].svelte",
+              "importPath": "../src/pages/app/toppings/[id].svelte",
+              "isLayout": false,
+              "isReset": false,
+              "isIndex": false,
+              "isFallback": false,
+              "isPage": true,
+              "ownMeta": {},
+              "meta": {
+                "recursive": true,
+                "preload": false,
+                "prerender": true
+              },
+              "path": "/app/toppings/:id",
+              "id": "_app_toppings__id",
+              "component": () => import('../src/pages/app/toppings/[id].svelte').then(m => m.default)
+            },
+            {
+              "isFile": true,
+              "isDir": false,
+              "file": "index.svelte",
+              "filepath": "/app/toppings/index.svelte",
+              "name": "index",
+              "ext": "svelte",
+              "badExt": false,
+              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings/index.svelte",
+              "importPath": "../src/pages/app/toppings/index.svelte",
+              "isLayout": false,
+              "isReset": false,
+              "isIndex": true,
+              "isFallback": false,
+              "isPage": true,
+              "ownMeta": {},
+              "meta": {
+                "recursive": true,
+                "preload": false,
+                "prerender": true
+              },
+              "path": "/app/toppings/index",
+              "id": "_app_toppings_index",
+              "component": () => import('../src/pages/app/toppings/index.svelte').then(m => m.default)
+            }
+          ],
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": false,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": false,
+            "prerender": true
+          },
+          "path": "/app/toppings"
         }
       ],
       "isLayout": true,
@@ -100,6 +223,31 @@ export const _tree = {
       "path": "/index",
       "id": "_index",
       "component": () => import('../src/pages/index.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "register.svelte",
+      "filepath": "/register.svelte",
+      "name": "register",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/register.svelte",
+      "importPath": "../src/pages/register.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": false,
+        "prerender": true
+      },
+      "path": "/register",
+      "id": "_register",
+      "component": () => import('../src/pages/register.svelte').then(m => m.default)
     }
   ],
   "isLayout": false,

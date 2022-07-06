@@ -3,4 +3,6 @@
   import { routes } from "../.routify/routes";
 </script>
 
-<Router {routes} />
+<div class="bg-orange-400 h-screen">
+  <Router routes={routes} />
+</div>
