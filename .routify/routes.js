@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.8
- * File generated Wed Jul 06 2022 15:20:15 GMT+0530 (India Standard Time)
+ * File generated Thu Jul 07 2022 16:20:18 GMT+0530 (India Standard Time)
  */
 
 export const __version = "2.18.8"
-export const __timestamp = "2022-07-06T09:50:15.145Z"
+export const __timestamp = "2022-07-07T10:50:18.632Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -32,7 +32,7 @@ export const _tree = {
       "name": "_layout",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/_layout.svelte",
+      "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/_layout.svelte",
       "children": [
         {
           "isFile": false,
@@ -42,7 +42,7 @@ export const _tree = {
           "name": "order",
           "ext": "",
           "badExt": false,
-          "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order",
+          "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/order",
           "children": [
             {
               "isFile": true,
@@ -52,7 +52,7 @@ export const _tree = {
               "name": "[id]",
               "ext": "svelte",
               "badExt": false,
-              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order/[id].svelte",
+              "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/order/[id].svelte",
               "importPath": "../src/pages/app/order/[id].svelte",
               "isLayout": false,
               "isReset": false,
@@ -77,7 +77,7 @@ export const _tree = {
               "name": "index",
               "ext": "svelte",
               "badExt": false,
-              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/order/index.svelte",
+              "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/order/index.svelte",
               "importPath": "../src/pages/app/order/index.svelte",
               "isLayout": false,
               "isReset": false,
@@ -116,7 +116,7 @@ export const _tree = {
           "name": "toppings",
           "ext": "",
           "badExt": false,
-          "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings",
+          "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/toppings",
           "children": [
             {
               "isFile": true,
@@ -126,7 +126,7 @@ export const _tree = {
               "name": "[id]",
               "ext": "svelte",
               "badExt": false,
-              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings/[id].svelte",
+              "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/toppings/[id].svelte",
               "importPath": "../src/pages/app/toppings/[id].svelte",
               "isLayout": false,
               "isReset": false,
@@ -151,7 +151,7 @@ export const _tree = {
               "name": "index",
               "ext": "svelte",
               "badExt": false,
-              "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/app/toppings/index.svelte",
+              "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/app/toppings/index.svelte",
               "importPath": "../src/pages/app/toppings/index.svelte",
               "isLayout": false,
               "isReset": false,
@@ -207,7 +207,7 @@ export const _tree = {
       "name": "index",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/index.svelte",
+      "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/index.svelte",
       "importPath": "../src/pages/index.svelte",
       "isLayout": false,
       "isReset": false,
@@ -232,7 +232,7 @@ export const _tree = {
       "name": "register",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/prashant/projects/stepzen/front/src/pages/register.svelte",
+      "absolutePath": "C:/Users/HP/OneDrive/Desktop/Stepzen/stepzen_frontend/src/pages/register.svelte",
       "importPath": "../src/pages/register.svelte",
       "isLayout": false,
       "isReset": false,
