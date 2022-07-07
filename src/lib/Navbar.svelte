@@ -1,7 +1,13 @@
 <script lang="ts">
+  import logo from "../assets/logo.svg";
 </script>
 
-<h1>this is a navbar</h1>
+<nav class="bg-green-400 h-12 flex items-center">
+  <ul>
+    <li><img src={logo} alt="logo" class="w-20 mx-16 " /></li>
+    <!-- User ICon left me?-->
+  </ul>
+</nav>
 
 <style>
   h1 {
