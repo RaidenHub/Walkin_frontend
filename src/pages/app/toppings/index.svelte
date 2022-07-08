@@ -7,18 +7,16 @@
 
   </div>
 </section> -->
-<!-- component -->
-<!-- This is an example component -->
-<div class="max-w-2xl mx-auto">
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="w-5/6 mx-auto">
+  <div class="relative overflow-x-auto sm:rounded-lg">
     <div class="p-4">
       <label for="table-search" class="sr-only">Search</label>
-      <div class="relative mt-1">
+      <div class="relative mt-1 flex justify-center">
         <div
           class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
         >
           <svg
-            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+            class="w-5 h-5 ml-28 text-gray-500 dark:text-gray-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +31,7 @@
         <input
           type="text"
           id="table-search"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="bg-gray-50 w-5/6   border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search for items"
         />
       </div>
@@ -44,17 +42,17 @@
       >
         <tr>
           <th scope="col" class="p-4">
-            <div class="flex items-center">
+            <!-- <div class="flex items-center">
               <input
                 id="checkbox-all-search"
                 type="checkbox"
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
               <label for="checkbox-all-search" class="sr-only">checkbox</label>
-            </div>
+            </div> -->
           </th>
-          <th scope="col" class="px-6 py-3"> Product name </th>
-          <th scope="col" class="px-6 py-3"> Color </th>
+          <th scope="col" class="px-6 py-3"> Topping name </th>
+          <th scope="col" class="px-6 py-3"> Quantity </th>
           <th scope="col" class="px-6 py-3"> Category </th>
           <th scope="col" class="px-6 py-3"> Price </th>
           <th scope="col" class="px-6 py-3">
@@ -89,7 +87,7 @@
           <td class="px-6 py-4"> $2999 </td>
           <td class="px-6 py-4 text-right">
             <a
-              href="#"
+              href="/"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >Edit</a
             >
@@ -153,7 +151,7 @@
           <td class="px-6 py-4"> $99 </td>
           <td class="px-6 py-4 text-right">
             <a
-              href="#"
+              href="/"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >Edit</a
             >
