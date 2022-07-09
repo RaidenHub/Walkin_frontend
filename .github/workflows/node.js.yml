@@ -25,14 +25,21 @@ jobs:
     - name: Build
       run: pnpm run build
 
-    - name: Deploy
-      run: |
-        git config --global user.name $user_name
-        git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
-        pnpm run deploy
+    - name: Publish
+      uses: netlify/actions/cli@master
+      with:
+        args: deploy --dir=dist --prod
       env:
-        user_name: 'prashantm2001'
-        user_email: 'prashant.om@somaiya.edu'
-        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-        repository: ${{ github.repository }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    # - name: Deploy
+    #   run: |
+    #     git config --global user.name $user_name
+    #     git config --global user.email $user_email
+    #     git remote set-url origin https://${github_token}@github.com/${repository}
+    #     pnpm run deploy
+    #   env:
+    #     user_name: 'prashantm2001'
+    #     user_email: 'prashant.om@somaiya.edu'
+    #     github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+    #     repository: ${{ github.repository }}
