@@ -1,12 +1,14 @@
 <div
-  class="bg-[#D0FFCF]  w-max h-80 flex flex-col items-center justify-center rounded-md"
+  class="bg-[#D0FFCF]  xl:w-48 md:w-40 xl:h-max flex flex-col items-center justify-center rounded-md"
 >
-  <div class="w-full h-12 m-4 pb-4 pl-2 justify-center items-center">
-    <span class="text-sm font-light pl-4">Order Completed:</span>345<br />
-    <span class="text-sm font-light pl-4 ">Order Pending:</span>12<br />
+  <!-- <div
+    class="bg-medium-dark bg-opacity-30 rounded-md xl:w-44 md:w-36 h-16 m-2  flex flex-col justify-center items-center"
+  >
+    <span class="text-sm font-medium mx-2 py-1 ">Completed:48</span>
+    <span class="text-sm font-medium mx-2 py-1">Pending:12</span>
   </div>
   <div class="w-full h-max flex flex-col items-center justify-center mt-4">
-    <h3 class="text-base">Completed Orders</h3>
+    <h3 class="text-sm">Completed Orders</h3>
     <ul class="w-full h-full flex flex-col items-center justify-center mt-4">
       <li class="w-fit h-fit flex items-center justify-center mb-2">
         <span>123</span>Order Title<br />
@@ -27,5 +29,8 @@
         <span>369</span>Order Title<br />
       </li>
     </ul>
-  </div>
+  </div> -->
 </div>
+<!-- <div class="m-1 -mr-2">
+        <OrderCount />
+      </div> -->

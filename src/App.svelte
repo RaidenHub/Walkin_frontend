@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Router } from "@roxi/routify";
   import { routes } from "../.routify/routes";
+  import "tw-elements";
 </script>
 
-<div class="bg-orange-400 h-screen">
-  <Router routes={routes} />
+<div class="bg-slate-200 h-screen">
+  <Router {routes} />
 </div>
