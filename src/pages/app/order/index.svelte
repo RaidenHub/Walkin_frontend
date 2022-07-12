@@ -5,6 +5,9 @@
   import TopOrders from "../../../components/order/topOrders.svelte";
   import SingleOrder from "../../../components/order/singleOrder.svelte";
 import Table from "../../../components/Table.svelte";
+  import { myquery } from "../../../generated/generated";
+   
+   $: t = myquery({});
 </script>
 
 <!-- <section class=" h-sreen w-screen flex items-center justify-center flex-col">
@@ -38,4 +41,7 @@ import Table from "../../../components/Table.svelte";
   <div class="col-start-4 col-span-8  w-full h-max mt-4">
     <Table />
   </div>
+   {#each $t?.data.getFoods || [] as item}
+   <div>{item.description}</div>
+   {/each}
 </div>
