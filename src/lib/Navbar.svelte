@@ -51,7 +51,7 @@
       class="collapse navbar-collapse flex-grow items-center"
       id="navbarSupportedContent1"
     >
-      <a class="text-xl text-white pr-2 font-semibold" href="/order"
+      <a class="text-xl text-white pr-2 font-semibold" href="/app/order"
         ><img src={logo} alt="logo" class="w-20 mx-16 " /></a
       >
       <!-- Left links -->

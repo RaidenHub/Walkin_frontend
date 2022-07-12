@@ -1,1 +1,6 @@
-<h1 class="text-5xl">Order Status</h1>
+<script>
+     import { params } from '@roxi/routify'
+     console.log($params) /** {userId: 123, postId: 456} **/
+</script>
+
+<h1 class="text-5xl">{$params?.id} Order Status</h1>

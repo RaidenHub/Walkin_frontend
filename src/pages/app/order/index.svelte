@@ -4,6 +4,7 @@
   import OrderSort from "../../../components/order/orderSort.svelte";
   import TopOrders from "../../../components/order/topOrders.svelte";
   import SingleOrder from "../../../components/order/singleOrder.svelte";
+import Table from "../../../components/Table.svelte";
 </script>
 
 <!-- <section class=" h-sreen w-screen flex items-center justify-center flex-col">
@@ -35,6 +36,6 @@
   </div>
   <div class="col-start-2 col-span-2 w-full h-80 mt-4"><OrderSort /></div>
   <div class="col-start-4 col-span-8  w-full h-max mt-4">
-    <SingleOrder />
+    <Table />
   </div>
 </div>

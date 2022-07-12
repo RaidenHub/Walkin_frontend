@@ -1,3 +1,6 @@
+<script>
+  let orderid;
+</script>
 <div class="accordion accordion-flush " id="accordionFlushExample">
   <div
     class="accordion-item  border-t-0 border-l-0 border-r-0 rounded-none bg-medium border border-gray-200"
@@ -54,8 +57,7 @@
       id="flush-collapseOne"
       class="accordion-collapse border-0 collapse show h-32 bg-lightest"
       aria-labelledby="flush-headingOne"
-      data-bs-parent="#accordionFlushExample"
-    >
+      data-bs-parent="#accordionFlushExample">
       <div class="accordion-body py-4 px-5">
         Placeholder content for this accordion, which is intended to demonstrate
         the <code>.accordion-flush</code> class. This is the first item's accordion
