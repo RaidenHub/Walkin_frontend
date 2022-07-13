@@ -55,12 +55,12 @@
 
 <div>
   <div
-    class="grid grid-cols-12 gap-4 bg-slate-700 text-slate-300 py-4 px-8 rounded-md text-center uppercase my-3"
+    class="grid grid-cols-12 gap-4 bg-[#FF8F00] bg-opacity-80 text-white py-4 px-8 rounded-md text-center uppercase my-3"
   >
-    <div class="text-lg col-span-1">
+    <div class="text-base font-light  col-span-1">
       <h3>Order No.</h3>
     </div>
-    <div class="text-lg font-semibold col-span-4">
+    <div class="text-lg font-light col-span-4">
       <h3>Customers Name</h3>
     </div>
     <div class="text-lg col-span-3">

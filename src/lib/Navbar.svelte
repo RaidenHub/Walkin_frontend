@@ -17,7 +17,7 @@
   }
 </style> -->
 <nav
-  class="relative w-full flex flex-wrap items-center justify-between py-3 bg-[#FF8F00] text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+  class="relative w-full h-max flex flex-wrap items-center justify-between py-3 bg-[#FF8F00] text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
 >
   <div
     class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
@@ -62,8 +62,10 @@
 
     <!-- Right elements -->
     <div class="flex items-center relative">
+      <a class=" text-black mr-24 text-xl underline" href="/app/toppings"
+        ><h1>Toppings</h1></a
+      >
       <!-- Icon -->
-
       <div class="dropdown relative">
         <a
           class="dropdown-toggle flex items-center hidden-arrow"
@@ -82,25 +84,19 @@
           />
         </a>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+          class="dropdown-menu w-24 absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1  m-0 bg-clip-padding border-none left-auto right-0"
           aria-labelledby="dropdownMenuButton2"
         >
           <li>
             <a
               class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-              href="#">Action</a
+              href="#">Profile</a
             >
           </li>
           <li>
             <a
               class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-              href="#">Another action</a
-            >
-          </li>
-          <li>
-            <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-              href="#">Something else here</a
+              href="#">Logout</a
             >
           </li>
         </ul>
