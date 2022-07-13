@@ -17,7 +17,7 @@
   }
 </style> -->
 <nav
-  class="relative w-full flex flex-wrap items-center justify-between py-3 bg-green-500 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+  class="relative w-full flex flex-wrap items-center justify-between py-3 bg-[#FF8F00] text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
 >
   <div
     class="container-fluid w-full flex flex-wrap items-center justify-between px-6"

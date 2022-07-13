@@ -1,4 +1,4 @@
-<div class="bg-lightest w-full h-52 flex items-center rounded-md">
+<div class="bg-white w-full h-52 flex items-center shadow-md rounded-md">
   <form action="submit" class="m-4">
     <div class="flex items-center justify-between py-4">
       <label class="w-max text-lg" for="sort">Sort By:</label>
