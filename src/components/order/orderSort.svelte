@@ -1,8 +1,24 @@
-<div class="bg-lightest w-full h-52 flex items-center rounded-md">
+<div class="bg-white w-full h-52 flex items-center shadow-md rounded-md">
   <form action="submit" class="m-4">
     <div class="flex items-center justify-between py-4">
       <label class="w-max text-lg" for="sort">Sort By:</label>
-      <select class="w-32 p-4 mx-4 text-sm" id="sort">
+      <select
+        class="form-select appearance-none
+      block
+      w-36
+      p-2 mx-2  
+      text-sm
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="sort"
+      >
         <option>Newest</option>
         <option>Oldest</option>
         <option>Most Popular</option>
@@ -11,7 +27,23 @@
     </div>
     <div class="flex items-center justify-between py-4">
       <label class="text-lg" for="type">Veg/N.Veg:</label>
-      <select class="w-32 p-4 mx-4 text-sm" id="type">
+      <select
+        class="form-select appearance-none
+      block
+      w-36
+      p-2 mx-2 
+      text-sm
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="type"
+      >
         <option>All</option>
         <option>Veg</option>
         <option>N.Veg </option></select
