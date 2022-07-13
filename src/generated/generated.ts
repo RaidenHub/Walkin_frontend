@@ -1,6 +1,6 @@
 import client from "../client";
 import type {
-        ApolloQueryResult, ObservableQuery, WatchQueryOptions, QueryOptions
+        ApolloQueryResult, ObservableQuery, WatchQueryOptions, QueryOptions, MutationOptions
       } from "@apollo/client";
 import { readable } from "svelte/store";
 import type { Readable } from "svelte/store";
@@ -24,10 +24,11 @@ export type Cart = {
   _id?: Maybe<Scalars['String']>;
   dips?: Maybe<Array<Maybe<Dips>>>;
   extras?: Maybe<Array<Maybe<Extras>>>;
-  foodId?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
+  productId?: Maybe<Scalars['String']>;
   quantity?: Maybe<Scalars['Int']>;
   sauces?: Maybe<Array<Maybe<Sauces>>>;
+  shopId?: Maybe<Scalars['String']>;
   toppings?: Maybe<Array<Maybe<Toppings>>>;
   userId?: Maybe<Scalars['String']>;
 };
@@ -93,18 +94,28 @@ export type Food = {
 
 export type Items = {
   __typename?: 'Items';
-  foodId?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
+  customeName?: Maybe<Scalars['String']>;
+  dips?: Maybe<Array<Maybe<Dips>>>;
+  extras?: Maybe<Array<Maybe<Extras>>>;
   price?: Maybe<Scalars['Int']>;
+  productId?: Maybe<Scalars['String']>;
   quantity?: Maybe<Scalars['Int']>;
+  sauces?: Maybe<Array<Maybe<Sauces>>>;
+  shopId?: Maybe<Scalars['String']>;
+  toppings?: Maybe<Array<Maybe<Toppings>>>;
   userId?: Maybe<Scalars['String']>;
 };
 
 export type ItemsInput = {
-  foodId?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
+  customeName?: InputMaybe<Scalars['String']>;
+  dips?: InputMaybe<Array<InputMaybe<DipsInput>>>;
+  extras?: InputMaybe<Array<InputMaybe<ExtrasInput>>>;
   price?: InputMaybe<Scalars['Int']>;
+  productId?: InputMaybe<Scalars['String']>;
   quantity?: InputMaybe<Scalars['Int']>;
+  sauces?: InputMaybe<Array<InputMaybe<SaucesInput>>>;
+  shopId?: InputMaybe<Scalars['String']>;
+  toppings?: InputMaybe<Array<InputMaybe<ToppingsInput>>>;
   userId?: InputMaybe<Scalars['String']>;
 };
 
@@ -153,12 +164,14 @@ export type Mutation = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationAddToCartArgs = {
+  _id?: InputMaybe<Scalars['String']>;
   dips?: InputMaybe<Array<InputMaybe<DipsInput>>>;
   extras?: InputMaybe<Array<InputMaybe<ExtrasInput>>>;
-  foodId?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
+  productId?: InputMaybe<Scalars['String']>;
   quantity?: InputMaybe<Scalars['Int']>;
   sauces?: InputMaybe<Array<InputMaybe<SaucesInput>>>;
+  shopId?: InputMaybe<Scalars['String']>;
   token: Scalars['String'];
   toppings?: InputMaybe<Array<InputMaybe<ToppingsInput>>>;
   userId?: InputMaybe<Scalars['String']>;
@@ -177,12 +190,18 @@ export type MutationAddToCartArgs = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationAddToOrderArgs = {
-  foodId?: InputMaybe<Scalars['String']>;
-  items?: InputMaybe<ItemsInput>;
+  customeName?: InputMaybe<Scalars['String']>;
+  discount?: InputMaybe<Scalars['Int']>;
+  items?: InputMaybe<Array<InputMaybe<ItemsInput>>>;
   name?: InputMaybe<Scalars['String']>;
+  paymentId?: InputMaybe<Scalars['String']>;
+  paymentMethod?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
+  shopId?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
   token?: InputMaybe<Scalars['String']>;
+  total?: InputMaybe<Scalars['Int']>;
   userId?: InputMaybe<Scalars['String']>;
 };
 
@@ -404,10 +423,10 @@ export type MutationSignupArgs = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationUpdateCartArgs = {
+  _id: Scalars['String'];
   dips?: InputMaybe<Array<InputMaybe<DipsInput>>>;
   extras?: InputMaybe<Array<InputMaybe<ExtrasInput>>>;
   foodId?: InputMaybe<Scalars['String']>;
-  id: Scalars['String'];
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
   sauces?: InputMaybe<Array<InputMaybe<SaucesInput>>>;
@@ -534,6 +553,7 @@ export type Order = {
   items?: Maybe<Array<Maybe<Items>>>;
   paymentId?: Maybe<Scalars['String']>;
   paymentMethod?: Maybe<Scalars['String']>;
+  shopId?: Maybe<Scalars['String']>;
   status?: Maybe<Scalars['String']>;
   total?: Maybe<Scalars['Int']>;
   userId?: Maybe<Scalars['String']>;
@@ -754,6 +774,19 @@ export type MyqueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MyqueryQuery = { __typename?: 'Query', getFoods?: Array<{ __typename?: 'Food', category: string, description: string, dips?: Array<{ __typename?: 'Dip', name: string, price: number }> | null }> | null };
 
+export type LoginMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'accessToken', accessToken?: string | null } | null };
+
+export type MyMutationMutationVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type MyMutationMutation = { __typename?: 'Mutation', login?: { __typename?: 'accessToken', accessToken?: string | null } | null };
+
 
 export const MyqueryDoc = gql`
     query myquery {
@@ -764,6 +797,20 @@ export const MyqueryDoc = gql`
     }
     category
     description
+  }
+}
+    `;
+export const LoginDoc = gql`
+    mutation Login {
+  login(email: "string", password: "string") {
+    accessToken
+  }
+}
+    `;
+export const MyMutationDoc = gql`
+    mutation MyMutation($email: String, $password: String) {
+  login(email: $email, password: $password) {
+    accessToken
   }
 }
     `;
@@ -811,3 +858,27 @@ export const myquery = (
                 return client.query<MyqueryQuery>({query: MyqueryDoc, ...options})
               }
             
+export const Login = (
+            options: Omit<
+              MutationOptions<any, LoginMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<LoginMutation, LoginMutationVariables>({
+              mutation: LoginDoc,
+              ...options,
+            });
+            return m;
+          }
+export const MyMutation = (
+            options: Omit<
+              MutationOptions<any, MyMutationMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<MyMutationMutation, MyMutationMutationVariables>({
+              mutation: MyMutationDoc,
+              ...options,
+            });
+            return m;
+          }
