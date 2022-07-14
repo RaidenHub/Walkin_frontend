@@ -1,27 +1,40 @@
 <script lang="ts">
-     import LogoButton from "../lib/LogoButton.svelte";
-     import FaFacebookF from 'svelte-icons/fa/FaFacebookF.svelte'
-     import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte'
-     import FaLinkedinIn from 'svelte-icons/fa/FaLinkedinIn.svelte'
-     import logo from "../assets/logo.svg";
-     import login from "../assets/draw2.webp";
-     import { url } from '@roxi/routify'
-     import { Login, MyMutation, myquery } from '../generated/generated'
+import LogoButton from "../lib/LogoButton.svelte";
+import FaFacebookF from 'svelte-icons/fa/FaFacebookF.svelte'
+import FaTwitter from 'svelte-icons/fa/FaTwitter.svelte'
+import FaLinkedinIn from 'svelte-icons/fa/FaLinkedinIn.svelte'
+import logo from "../assets/logo.svg";
+import login from "../assets/draw2.webp";
+import { url } from '@roxi/routify'
+import { goto } from '@roxi/routify'
+import client from "../client";
+import { gql } from "@apollo/client/core";
 
-    let email = 'string';
-    let password = 'string';
-    async function onSubmit(e:any){
-      // let t = myquery({});
-      console.log("here")
-        let data =await MyMutation({
-        variables: {
+let email = 'string';
+let password = 'string';
+
+async function createCustomer () {
+    let mutation = null;
+    mutation = await client.mutate(gql`mutation mymutation($email: String , $password: String) {
+  login(email: $email, password: $password) {
+    accessToken
+  }
+}`, {
+      variables: {
         email,password
-      }});
-        console.log(data);
-    }
+      }
+    });
+    return mutation;
+  }
+async function onSubmit(e:any){
+  console.log("here")
+    let data =await createCustomer();
+    localStorage.setItem("token",data.data?.login?.accessToken);
+    $goto('./app/order/');
+}
 </script>
 
-<section class="h-screen">
+<section class="md:h-screen">
      <div class="px-6 h-full text-gray-800">
        <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
          <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
@@ -92,7 +105,7 @@
              </div>
    
              <div class="text-center lg:text-left">
-               <a href={$url('./app/order')}>
+               <!-- <a href={$url('./app/order')}> -->
                <button
                  type="button"
                  on:click={onSubmit}
@@ -100,7 +113,7 @@
                >
                  Login
                </button>
-               </a>
+               <!-- </a> -->
                <p class="text-sm font-semibold mt-2 pt-1 mb-0">
                  Don't have an account?
                  <a href={$url('./register')}

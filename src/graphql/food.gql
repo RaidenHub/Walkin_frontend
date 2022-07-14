@@ -1,21 +1,61 @@
-query myquery{
+query foods {
   getFoods {
-    dips {
-      name
-      price
-    }
+    _id
     category
     description
-  }
-}
-mutation Login {
-  login(email: "string", password: "string") {
-    accessToken
+    image
+    name
+    discount
   }
 }
 
-mutation MyMutation($email: String , $password: String) {
-  login(email: $email, password: $password) {
-    accessToken
+query Orders($token: String ) {
+  getOrder(token: $token) {
+    discount
+    items {
+      customeName
+      productId
+    }
+    status
+    total
+  }
+}
+query orderId($token: String , $id: String ) {
+  getOrderById(id: $id, token: $token) {
+    discount
+    items {
+      customeName
+      dips {
+        name
+        price
+        quantity
+      }
+      extras {
+        name
+        quantity
+        price
+      }
+      productId
+      price
+      quantity
+      sauces {
+        name
+        price
+        quantity
+      }
+      shopId
+      toppings {
+        name
+        price
+        quantity
+      }
+      userId
+    }
+    paymentId
+    paymentMethod
+    shopId
+    status
+    total
+    userId
   }
 }

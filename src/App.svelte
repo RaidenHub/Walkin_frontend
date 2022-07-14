@@ -4,6 +4,6 @@
   import "tw-elements";
 </script>
 
-<div class="bg-slate-200 h-screen">
+<div class="bg-slate-200 min-h-screen">
   <Router {routes} />
 </div>

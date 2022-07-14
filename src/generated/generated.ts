@@ -1,6 +1,6 @@
 import client from "../client";
 import type {
-        ApolloQueryResult, ObservableQuery, WatchQueryOptions, QueryOptions, MutationOptions
+        ApolloQueryResult, ObservableQuery, WatchQueryOptions, QueryOptions
       } from "@apollo/client";
 import { readable } from "svelte/store";
 import type { Readable } from "svelte/store";
@@ -769,73 +769,115 @@ export type ToppingsInput = {
   price: Scalars['Float'];
 };
 
-export type MyqueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type FoodsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyqueryQuery = { __typename?: 'Query', getFoods?: Array<{ __typename?: 'Food', category: string, description: string, dips?: Array<{ __typename?: 'Dip', name: string, price: number }> | null }> | null };
+export type FoodsQuery = { __typename?: 'Query', getFoods?: Array<{ __typename?: 'Food', _id: string, category: string, description: string, image: string, name: string, discount: number }> | null };
 
-export type LoginMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'accessToken', accessToken?: string | null } | null };
-
-export type MyMutationMutationVariables = Exact<{
-  email?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
+export type OrdersQueryVariables = Exact<{
+  token?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type MyMutationMutation = { __typename?: 'Mutation', login?: { __typename?: 'accessToken', accessToken?: string | null } | null };
+export type OrdersQuery = { __typename?: 'Query', getOrder?: Array<{ __typename?: 'Order', discount?: number | null, status?: string | null, total?: number | null, items?: Array<{ __typename?: 'Items', customeName?: string | null, productId?: string | null } | null> | null } | null> | null };
+
+export type OrderIdQueryVariables = Exact<{
+  token?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+}>;
 
 
-export const MyqueryDoc = gql`
-    query myquery {
+export type OrderIdQuery = { __typename?: 'Query', getOrderById?: { __typename?: 'Order', discount?: number | null, paymentId?: string | null, paymentMethod?: string | null, shopId?: string | null, status?: string | null, total?: number | null, userId?: string | null, items?: Array<{ __typename?: 'Items', customeName?: string | null, productId?: string | null, price?: number | null, quantity?: number | null, shopId?: string | null, userId?: string | null, dips?: Array<{ __typename?: 'Dips', name?: string | null, price?: number | null, quantity?: number | null } | null> | null, extras?: Array<{ __typename?: 'Extras', name?: string | null, quantity?: number | null, price?: number | null } | null> | null, sauces?: Array<{ __typename?: 'Sauces', name?: string | null, price?: number | null, quantity?: number | null } | null> | null, toppings?: Array<{ __typename?: 'Toppings', name?: string | null, price?: number | null, quantity?: number | null } | null> | null } | null> | null } | null };
+
+
+export const FoodsDoc = gql`
+    query foods {
   getFoods {
-    dips {
-      name
-      price
-    }
+    _id
     category
     description
+    image
+    name
+    discount
   }
 }
     `;
-export const LoginDoc = gql`
-    mutation Login {
-  login(email: "string", password: "string") {
-    accessToken
+export const OrdersDoc = gql`
+    query Orders($token: String) {
+  getOrder(token: $token) {
+    discount
+    items {
+      customeName
+      productId
+    }
+    status
+    total
   }
 }
     `;
-export const MyMutationDoc = gql`
-    mutation MyMutation($email: String, $password: String) {
-  login(email: $email, password: $password) {
-    accessToken
+export const OrderIdDoc = gql`
+    query orderId($token: String, $id: String) {
+  getOrderById(id: $id, token: $token) {
+    discount
+    items {
+      customeName
+      dips {
+        name
+        price
+        quantity
+      }
+      extras {
+        name
+        quantity
+        price
+      }
+      productId
+      price
+      quantity
+      sauces {
+        name
+        price
+        quantity
+      }
+      shopId
+      toppings {
+        name
+        price
+        quantity
+      }
+      userId
+    }
+    paymentId
+    paymentMethod
+    shopId
+    status
+    total
+    userId
   }
 }
     `;
-export const myquery = (
+export const foods = (
             options: Omit<
-              WatchQueryOptions<MyqueryQueryVariables>, 
+              WatchQueryOptions<FoodsQueryVariables>, 
               "query"
             >
           ): Readable<
-            ApolloQueryResult<MyqueryQuery> & {
+            ApolloQueryResult<FoodsQuery> & {
               query: ObservableQuery<
-                MyqueryQuery,
-                MyqueryQueryVariables
+                FoodsQuery,
+                FoodsQueryVariables
               >;
             }
           > => {
             const q = client.watchQuery({
-              query: MyqueryDoc,
+              query: FoodsDoc,
               ...options,
             });
             var result = readable<
-              ApolloQueryResult<MyqueryQuery> & {
+              ApolloQueryResult<FoodsQuery> & {
                 query: ObservableQuery<
-                  MyqueryQuery,
-                  MyqueryQueryVariables
+                  FoodsQuery,
+                  FoodsQueryVariables
                 >;
               }
             >(
@@ -849,36 +891,100 @@ export const myquery = (
             return result;
           }
         
-              export const Asyncmyquery = (
+              export const Asyncfoods = (
                 options: Omit<
-                  QueryOptions<MyqueryQueryVariables>,
+                  QueryOptions<FoodsQueryVariables>,
                   "query"
                 >
               ) => {
-                return client.query<MyqueryQuery>({query: MyqueryDoc, ...options})
+                return client.query<FoodsQuery>({query: FoodsDoc, ...options})
               }
             
-export const Login = (
+export const Orders = (
             options: Omit<
-              MutationOptions<any, LoginMutationVariables>, 
-              "mutation"
+              WatchQueryOptions<OrdersQueryVariables>, 
+              "query"
             >
-          ) => {
-            const m = client.mutate<LoginMutation, LoginMutationVariables>({
-              mutation: LoginDoc,
+          ): Readable<
+            ApolloQueryResult<OrdersQuery> & {
+              query: ObservableQuery<
+                OrdersQuery,
+                OrdersQueryVariables
+              >;
+            }
+          > => {
+            const q = client.watchQuery({
+              query: OrdersDoc,
               ...options,
             });
-            return m;
+            var result = readable<
+              ApolloQueryResult<OrdersQuery> & {
+                query: ObservableQuery<
+                  OrdersQuery,
+                  OrdersQueryVariables
+                >;
+              }
+            >(
+              { data: {} as any, loading: true, error: undefined, networkStatus: 1, query: q },
+              (set) => {
+                q.subscribe((v: any) => {
+                  set({ ...v, query: q });
+                });
+              }
+            );
+            return result;
           }
-export const MyMutation = (
+        
+              export const AsyncOrders = (
+                options: Omit<
+                  QueryOptions<OrdersQueryVariables>,
+                  "query"
+                >
+              ) => {
+                return client.query<OrdersQuery>({query: OrdersDoc, ...options})
+              }
+            
+export const orderId = (
             options: Omit<
-              MutationOptions<any, MyMutationMutationVariables>, 
-              "mutation"
+              WatchQueryOptions<OrderIdQueryVariables>, 
+              "query"
             >
-          ) => {
-            const m = client.mutate<MyMutationMutation, MyMutationMutationVariables>({
-              mutation: MyMutationDoc,
+          ): Readable<
+            ApolloQueryResult<OrderIdQuery> & {
+              query: ObservableQuery<
+                OrderIdQuery,
+                OrderIdQueryVariables
+              >;
+            }
+          > => {
+            const q = client.watchQuery({
+              query: OrderIdDoc,
               ...options,
             });
-            return m;
+            var result = readable<
+              ApolloQueryResult<OrderIdQuery> & {
+                query: ObservableQuery<
+                  OrderIdQuery,
+                  OrderIdQueryVariables
+                >;
+              }
+            >(
+              { data: {} as any, loading: true, error: undefined, networkStatus: 1, query: q },
+              (set) => {
+                q.subscribe((v: any) => {
+                  set({ ...v, query: q });
+                });
+              }
+            );
+            return result;
           }
+        
+              export const AsyncorderId = (
+                options: Omit<
+                  QueryOptions<OrderIdQueryVariables>,
+                  "query"
+                >
+              ) => {
+                return client.query<OrderIdQuery>({query: OrderIdDoc, ...options})
+              }
+            

@@ -1,56 +1,13 @@
-<script>
-  // lang=ts
-  import Tableitem from "./Tableitem.svelte";
-  let items = [
-    {
-      order_no: "1",
-      customer_name: "John Doe",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "2",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "3",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "4",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "5",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "2",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "2",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-    {
-      order_no: "2",
-      customer_name: "Mayuresh Nivatkar",
-      time: "12:00",
-      status: "Completed",
-    },
-  ];
+<script lang="ts">
+import { Orders } from "../generated/generated";
+import Tableitem from "./Tableitem.svelte";
+const token = localStorage.getItem("token") ?? "";
+console.log(token);
+$: items = Orders({
+  variables: {
+    token
+  }
+});
 </script>
 
 <div>
@@ -70,7 +27,7 @@
       <h3>Status</h3>
     </div>
   </div>
-  {#each items as item}
+  {#each $items?.data?.getOrder || [] as item}
     <Tableitem order={item} />
   {/each}
 </div>

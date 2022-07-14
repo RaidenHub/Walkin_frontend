@@ -1,13 +1,6 @@
-<script>
-  import OrderCount from "../../../components/order/orderCount.svelte";
-  import OrderList from "../../../components/order/orderList.svelte";
+<script lang='ts'>
   import OrderSort from "../../../components/order/orderSort.svelte";
-  import TopOrders from "../../../components/order/topOrders.svelte";
-  import SingleOrder from "../../../components/order/singleOrder.svelte";
   import Table from "../../../components/Table.svelte";
-  import { myquery } from "../../../generated/generated";
-
-  $: t = myquery({});
 </script>
 
 <section>
@@ -35,6 +28,3 @@
     </div>
   </div>
 </section>
-{#each $t?.data.getFoods || [] as item}
-  <div>{item.description}</div>
-{/each}
