@@ -1,6 +1,9 @@
 <script>
   export let order;
-  console.log(order.items);
+  const time = new Date(order.createdAt)
+  const tome = new Date();
+  const diff = Math.ceil((tome.getTime() - time.getTime())/(1000 * 60));
+  console.log(diff);
 </script>
 
 <div>
@@ -8,13 +11,13 @@
     class="grid grid-cols-12 gap-4 bg-slate-50 py-2 px-8 rounded-md text-center uppercase my-3 shadow-md"
   >
     <div class="text-lg col-span-1">
-      <h3>{order.items[0].productId ?? ""}</h3>
+      <h3>{order._id.slice(-5) ?? ""}</h3>
     </div>
     <div class="text-lg font-semibold col-span-4">
-      <h3>{order.items[0].customerName ?? ""}</h3>
+      <h3>{order.customerName ?? ""}</h3>
     </div>
     <div class="text-lg col-span-3">
-      <h3>{order.time ?? ""}</h3>
+      <h3>{diff ?? ""} mins ago</h3>
     </div>
     <div class="text-lg col-span-2">
       <div class="flex justify-center">
@@ -44,7 +47,7 @@
       </div>
     </div>
     <div class="col-span-2">
-      <a href="/app/order/1">
+      <a href="/app/order/{order._id}">
         <div class="flex justify-center">
           <button
             class="bg-[#FF8F00] bg-opacity-80 hover:bg-opacity-60 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

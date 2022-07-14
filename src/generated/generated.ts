@@ -17,6 +17,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  DateTime: any;
 };
 
 export type Cart = {
@@ -33,52 +34,66 @@ export type Cart = {
   userId?: Maybe<Scalars['String']>;
 };
 
-export type Dip = {
-  __typename?: 'Dip';
-  name: Scalars['String'];
-  price: Scalars['Float'];
+export type CartInput = {
+  dips?: InputMaybe<Array<InputMaybe<DipsCartInput>>>;
+  extras?: InputMaybe<Array<InputMaybe<ExtrasCartInput>>>;
+  price?: InputMaybe<Scalars['Int']>;
+  productId?: InputMaybe<Scalars['String']>;
+  quantity?: InputMaybe<Scalars['Int']>;
+  sauces?: InputMaybe<Array<InputMaybe<SaucesCartInput>>>;
+  shopId?: InputMaybe<Scalars['String']>;
+  toppings?: InputMaybe<Array<InputMaybe<ToppingsCartInput>>>;
+  userId?: InputMaybe<Scalars['String']>;
 };
 
 export type Dips = {
   __typename?: 'Dips';
+  isAvailable?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
 };
 
-export type DipsInput = {
+export type DipsCartInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
 };
 
-export type Extra = {
-  __typename?: 'Extra';
-  name: Scalars['String'];
-  price: Scalars['Float'];
+export type DipsInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['Int']>;
 };
 
 export type Extras = {
   __typename?: 'Extras';
+  isAvailable?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
 };
 
-export type ExtrasInput = {
+export type ExtrasCartInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
 };
 
+export type ExtrasInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['Int']>;
+};
+
 export type Food = {
   __typename?: 'Food';
-  _id: Scalars['ID'];
+  _id?: Maybe<Scalars['String']>;
   category: Scalars['String'];
   description: Scalars['String'];
-  dips?: Maybe<Array<Dip>>;
+  dips?: Maybe<Array<Maybe<Dips>>>;
   discount: Scalars['Float'];
-  extras?: Maybe<Array<Extra>>;
+  extras?: Maybe<Array<Maybe<Extras>>>;
   foodType: Scalars['String'];
   image: Scalars['String'];
   name: Scalars['String'];
@@ -87,36 +102,9 @@ export type Food = {
   numberOfFreeSauces: Scalars['Int'];
   numberOfFreeToppings: Scalars['Int'];
   price: Scalars['Float'];
-  sauces?: Maybe<Array<Sauce>>;
-  status: Scalars['String'];
-  toppings?: Maybe<Array<Topping>>;
-};
-
-export type Items = {
-  __typename?: 'Items';
-  customeName?: Maybe<Scalars['String']>;
-  dips?: Maybe<Array<Maybe<Dips>>>;
-  extras?: Maybe<Array<Maybe<Extras>>>;
-  price?: Maybe<Scalars['Int']>;
-  productId?: Maybe<Scalars['String']>;
-  quantity?: Maybe<Scalars['Int']>;
   sauces?: Maybe<Array<Maybe<Sauces>>>;
-  shopId?: Maybe<Scalars['String']>;
+  status: Scalars['String'];
   toppings?: Maybe<Array<Maybe<Toppings>>>;
-  userId?: Maybe<Scalars['String']>;
-};
-
-export type ItemsInput = {
-  customeName?: InputMaybe<Scalars['String']>;
-  dips?: InputMaybe<Array<InputMaybe<DipsInput>>>;
-  extras?: InputMaybe<Array<InputMaybe<ExtrasInput>>>;
-  price?: InputMaybe<Scalars['Int']>;
-  productId?: InputMaybe<Scalars['String']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  sauces?: InputMaybe<Array<InputMaybe<SaucesInput>>>;
-  shopId?: InputMaybe<Scalars['String']>;
-  toppings?: InputMaybe<Array<InputMaybe<ToppingsInput>>>;
-  userId?: InputMaybe<Scalars['String']>;
 };
 
 /**
@@ -164,7 +152,7 @@ export type Mutation = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationAddToCartArgs = {
-  _id?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   dips?: InputMaybe<Array<InputMaybe<DipsInput>>>;
   extras?: InputMaybe<Array<InputMaybe<ExtrasInput>>>;
   price?: InputMaybe<Scalars['Int']>;
@@ -190,17 +178,14 @@ export type MutationAddToCartArgs = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationAddToOrderArgs = {
+  createdAt?: InputMaybe<Scalars['String']>;
   customeName?: InputMaybe<Scalars['String']>;
   discount?: InputMaybe<Scalars['Int']>;
-  items?: InputMaybe<Array<InputMaybe<ItemsInput>>>;
-  name?: InputMaybe<Scalars['String']>;
+  items?: InputMaybe<Array<InputMaybe<CartInput>>>;
   paymentId?: InputMaybe<Scalars['String']>;
   paymentMethod?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Int']>;
-  quantity?: InputMaybe<Scalars['Int']>;
   shopId?: InputMaybe<Scalars['String']>;
   status?: InputMaybe<Scalars['String']>;
-  token?: InputMaybe<Scalars['String']>;
   total?: InputMaybe<Scalars['Int']>;
   userId?: InputMaybe<Scalars['String']>;
 };
@@ -480,13 +465,16 @@ export type MutationUpdateFoodArgs = {
  * Serial execution of the provided mutations ensures against race conditions during these side‐effects.
  */
 export type MutationUpdateOrderArgs = {
-  foodId?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
-  items?: InputMaybe<ItemsInput>;
-  name?: InputMaybe<Scalars['String']>;
-  price?: InputMaybe<Scalars['Int']>;
-  quantity?: InputMaybe<Scalars['Int']>;
-  token?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['String']>;
+  customeName?: InputMaybe<Scalars['String']>;
+  discount?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  items?: InputMaybe<Array<InputMaybe<CartInput>>>;
+  paymentId?: InputMaybe<Scalars['String']>;
+  paymentMethod?: InputMaybe<Scalars['String']>;
+  shopId?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+  total?: InputMaybe<Scalars['Int']>;
   userId?: InputMaybe<Scalars['String']>;
 };
 
@@ -508,7 +496,7 @@ export type MutationUpdateShopperArgs = {
   city?: InputMaybe<Scalars['String']>;
   country?: InputMaybe<Scalars['String']>;
   email?: InputMaybe<Scalars['String']>;
-  id: Scalars['ID'];
+  id?: InputMaybe<Scalars['String']>;
   isActive?: InputMaybe<Scalars['Boolean']>;
   isDeleted?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
@@ -549,8 +537,11 @@ export type MutationUpdateUserArgs = {
 
 export type Order = {
   __typename?: 'Order';
+  _id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['String']>;
+  customeName?: Maybe<Scalars['String']>;
   discount?: Maybe<Scalars['Int']>;
-  items?: Maybe<Array<Maybe<Items>>>;
+  items?: Maybe<Array<Maybe<Cart>>>;
   paymentId?: Maybe<Scalars['String']>;
   paymentMethod?: Maybe<Scalars['String']>;
   shopId?: Maybe<Scalars['String']>;
@@ -674,27 +665,29 @@ export type QueryGetUserArgs = {
   token: Scalars['String'];
 };
 
-export type Sauce = {
-  __typename?: 'Sauce';
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
 export type Sauces = {
   __typename?: 'Sauces';
+  isAvailable?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
 };
 
-export type SaucesInput = {
+export type SaucesCartInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
 };
 
+export type SaucesInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['Int']>;
+};
+
 export type Shopper = {
   __typename?: 'Shopper';
+  _id?: Maybe<Scalars['String']>;
   address?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
   city?: Maybe<Scalars['String']>;
@@ -710,27 +703,29 @@ export type Shopper = {
   zip?: Maybe<Scalars['String']>;
 };
 
-export type Topping = {
-  __typename?: 'Topping';
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
 export type Toppings = {
   __typename?: 'Toppings';
+  isAvailable?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Int']>;
-  quantity?: Maybe<Scalars['Int']>;
 };
 
-export type ToppingsInput = {
+export type ToppingsCartInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Int']>;
   quantity?: InputMaybe<Scalars['Int']>;
 };
 
+export type ToppingsInput = {
+  isAvailable?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
+  price?: InputMaybe<Scalars['Int']>;
+};
+
 export type User = {
   __typename?: 'User';
+  _id?: Maybe<Scalars['String']>;
   address?: Maybe<Scalars['String']>;
   city?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
@@ -749,37 +744,17 @@ export type AccessToken = {
   accessToken?: Maybe<Scalars['String']>;
 };
 
-export type DipsInput = {
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
-export type ExtrasInput = {
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
-export type SaucesInput = {
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
-export type ToppingsInput = {
-  name: Scalars['String'];
-  price: Scalars['Float'];
-};
-
 export type FoodsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FoodsQuery = { __typename?: 'Query', getFoods?: Array<{ __typename?: 'Food', _id: string, category: string, description: string, image: string, name: string, discount: number }> | null };
+export type FoodsQuery = { __typename?: 'Query', getFoods?: Array<{ __typename?: 'Food', _id?: string | null, category: string, description: string, status: string, foodType: string, image: string, name: string, price: number }> | null };
 
 export type OrdersQueryVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type OrdersQuery = { __typename?: 'Query', getOrder?: Array<{ __typename?: 'Order', discount?: number | null, status?: string | null, total?: number | null, items?: Array<{ __typename?: 'Items', customeName?: string | null, productId?: string | null } | null> | null } | null> | null };
+export type OrdersQuery = { __typename?: 'Query', getOrder?: Array<{ __typename?: 'Order', _id?: string | null, createdAt?: string | null, customeName?: string | null, total?: number | null, status?: string | null, paymentMethod?: string | null } | null> | null };
 
 export type OrderIdQueryVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
@@ -787,7 +762,7 @@ export type OrderIdQueryVariables = Exact<{
 }>;
 
 
-export type OrderIdQuery = { __typename?: 'Query', getOrderById?: { __typename?: 'Order', discount?: number | null, paymentId?: string | null, paymentMethod?: string | null, shopId?: string | null, status?: string | null, total?: number | null, userId?: string | null, items?: Array<{ __typename?: 'Items', customeName?: string | null, productId?: string | null, price?: number | null, quantity?: number | null, shopId?: string | null, userId?: string | null, dips?: Array<{ __typename?: 'Dips', name?: string | null, price?: number | null, quantity?: number | null } | null> | null, extras?: Array<{ __typename?: 'Extras', name?: string | null, quantity?: number | null, price?: number | null } | null> | null, sauces?: Array<{ __typename?: 'Sauces', name?: string | null, price?: number | null, quantity?: number | null } | null> | null, toppings?: Array<{ __typename?: 'Toppings', name?: string | null, price?: number | null, quantity?: number | null } | null> | null } | null> | null } | null };
+export type OrderIdQuery = { __typename?: 'Query', getOrderById?: { __typename?: 'Order', _id?: string | null, createdAt?: string | null, customeName?: string | null, discount?: number | null, paymentId?: string | null, paymentMethod?: string | null, shopId?: string | null, status?: string | null, total?: number | null, userId?: string | null, items?: Array<{ __typename?: 'Cart', _id?: string | null, price?: number | null, productId?: string | null, quantity?: number | null, shopId?: string | null, userId?: string | null, dips?: Array<{ __typename?: 'Dips', name?: string | null, price?: number | null } | null> | null, extras?: Array<{ __typename?: 'Extras', name?: string | null, price?: number | null } | null> | null, sauces?: Array<{ __typename?: 'Sauces', name?: string | null, price?: number | null } | null> | null, toppings?: Array<{ __typename?: 'Toppings', name?: string | null, price?: number | null } | null> | null } | null> | null } | null };
 
 
 export const FoodsDoc = gql`
@@ -796,56 +771,56 @@ export const FoodsDoc = gql`
     _id
     category
     description
+    status
+    foodType
     image
     name
-    discount
+    price
   }
 }
     `;
 export const OrdersDoc = gql`
     query Orders($token: String) {
   getOrder(token: $token) {
-    discount
-    items {
-      customeName
-      productId
-    }
-    status
+    _id
+    createdAt
+    customeName
     total
+    status
+    paymentMethod
   }
 }
     `;
 export const OrderIdDoc = gql`
     query orderId($token: String, $id: String) {
   getOrderById(id: $id, token: $token) {
+    _id
+    createdAt
+    customeName
     discount
     items {
-      customeName
+      _id
+      price
+      productId
+      quantity
+      shopId
+      userId
       dips {
         name
         price
-        quantity
       }
       extras {
         name
-        quantity
         price
       }
-      productId
-      price
-      quantity
       sauces {
         name
         price
-        quantity
       }
-      shopId
       toppings {
         name
         price
-        quantity
       }
-      userId
     }
     paymentId
     paymentMethod

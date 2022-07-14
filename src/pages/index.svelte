@@ -10,8 +10,8 @@ import { goto } from '@roxi/routify'
 import client from "../client";
 import { gql } from "@apollo/client/core";
 
-let email = 'string';
-let password = 'string';
+let email = '';
+let password = '';
 
 async function createCustomer () {
     let mutation = null;
@@ -27,7 +27,7 @@ async function createCustomer () {
     return mutation;
   }
 async function onSubmit(e:any){
-  console.log("here")
+  console.log(email,password);
     let data =await createCustomer();
     localStorage.setItem("token",data.data?.login?.accessToken);
     $goto('./app/order/');
