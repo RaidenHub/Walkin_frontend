@@ -1,4 +1,6 @@
-<div class="bg-white w-full h-52 flex items-center shadow-md rounded-md">
+<div
+  class="bg-white md:h-40 md:w-72   xl:w-72 xl:h-52 xl:flex xl:items-center shadow-lg rounded-md"
+>
   <form action="submit" class="m-4">
     <div class="flex items-center justify-between py-4">
       <label class="w-max text-lg" for="sort">Sort By:</label>
@@ -25,7 +27,7 @@
         <option>Least Popular</option>
       </select>
     </div>
-    <div class="flex items-center justify-between py-4">
+    <div class=" flex items-center justify-between py-4">
       <label class="text-lg" for="type">Veg/N.Veg:</label>
       <select
         class="form-select appearance-none

@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import OrderSort from "../../../components/order/orderSort.svelte";
   import Table from "../../../components/Table.svelte";
 </script>
@@ -12,17 +12,19 @@
         Order List
       </h1>
     </div>
-    <div class="col-start-2 col-span-2 w-full h-80 mt-4">
+    <div
+      class="xl:col-start-2 xl:col-span-2 md:gap-8 xl:mt-4 xl:w-full xl:h-80  md:col-span-12 md:px-8 flex xl:flex-col items-center justify-center"
+    >
       <OrderSort />
       <div
-        class=" w-full h-32 flex flex-col mt-4 bg-white shadow-md rounded-md justify-center items-center"
+        class="md:h-40 md:w-72 xl:w-72 xl:h-32 flex flex-col  bg-white shadow-lg rounded-md justify-center items-center"
       >
         <div class="text-xl font-medium  py-4 ">Completed:48</div>
         <div class="text-xl font-medium  py-4">Pending:12</div>
       </div>
     </div>
     <div
-      class="col-start-4 col-span-8  w-full h-max mt-1 flex items-center justify-center"
+      class="xl:col-start-4 xl:col-span-8 md:col-span-12 md:px-8 xl:w-full xl:h-max flex items-center justify-center"
     >
       <Table />
     </div>

@@ -28,10 +28,10 @@
   ];
 </script>
 
-<div class="w-5/6 mx-auto">
+<div class="w-5/6 mx-auto mt-8">
   <div class="relative overflow-x-auto sm:rounded-base">
     <div
-      class="grid grid-cols-12 gap-4 bg-slate-700 text-slate-300 py-4 px-8 rounded-md text-center uppercase my-3"
+      class="grid grid-cols-12 gap-4 h-16  bg-slate-700 text-slate-300 py-4 px-8 rounded-md text-center uppercase my-3"
     >
       <div class="text-base col-span-1">
         <h3>Availablity</h3>
