@@ -1,8 +1,18 @@
 <script>
   export let order;
+  let timee;
   const time = new Date(order.createdAt)
   const tome = new Date();
   const diff = Math.ceil((tome.getTime() - time.getTime())/(1000 * 60));
+  if(diff < 60){
+    timee = `${diff} minutes ago`;
+  }
+  if(diff > 60 && diff < 1440){
+    timee = `${Math.ceil(diff/60)} hours ago`;
+  }
+  if(diff > 1440){
+    timee = `${Math.ceil(diff/1440)} days ago`;
+  }
   console.log(diff);
 </script>
 
@@ -17,7 +27,7 @@
       <h3>{order.customeName ?? ""}</h3>
     </div>
     <div class="text-lg col-span-3">
-      <h3>{diff ?? ""} mins ago</h3>
+      <h3>{timee ?? ""}</h3>
     </div>
     <div class="text-lg col-span-2">
       <div class="flex justify-center">

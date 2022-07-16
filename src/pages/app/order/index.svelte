@@ -19,8 +19,8 @@
       <div
         class="md:h-40 md:w-72 xl:w-72 xl:h-32 flex flex-col  bg-white shadow-lg rounded-md justify-center items-center"
       >
-        <div class="text-xl font-medium  py-4 ">Completed:48</div>
-        <div class="text-xl font-medium  py-4">Pending:12</div>
+        <div class="text-xl font-medium  py-4 ">Completed:3</div>
+        <div class="text-xl font-medium  py-4">Pending:2</div>
       </div>
     </div>
     <div
