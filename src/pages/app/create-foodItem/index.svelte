@@ -226,6 +226,15 @@
           placeholder="0"
         />
       </div>
+      <div class="w-full flex items-center justify-center m-5">
+               <button
+                 type="button"
+                 class="inline-block px-7 py-3 bg-blue-500 text-white font-medium text-md leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+               >
+                 Create
+               </button>
+
+      </div>
     </div>
   </form>
 </div>

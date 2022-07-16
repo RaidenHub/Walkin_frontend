@@ -13,8 +13,8 @@
     <div class="text-lg col-span-1">
       <h3>{order._id.slice(-5) ?? ""}</h3>
     </div>
-    <div class="text-lg font-semibold col-span-4">
-      <h3>{order.customerName ?? ""}</h3>
+    <div class="text-lg font-semibold col-span-4 text-start pl-4">
+      <h3>{order.customeName ?? ""}</h3>
     </div>
     <div class="text-lg col-span-3">
       <h3>{diff ?? ""} mins ago</h3>
